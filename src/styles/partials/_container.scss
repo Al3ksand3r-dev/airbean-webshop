@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  height: 100vh;
+
+  &__content {
+    height: 100%;
+    margin: auto;
+    max-width: 468px;
+    &--bg-pink {
+      background: $pink;
+    }
+  }
+}

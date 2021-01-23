@@ -1,0 +1,15 @@
+.graphics {
+  width: 100%;
+  margin: auto;
+  display: block;
+  max-width: 468px;
+
+  &--bottom {
+    bottom: 0;
+    position: fixed;
+    @include md() {
+      left: 50%;
+      transform: translate(-50%);
+    }
+  }
+}
