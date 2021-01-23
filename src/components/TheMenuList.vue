@@ -6,7 +6,10 @@
       :key="menuItem.id"
     >
       <div class="menu-list__item__row mr-20">
-        <span class="lnr lnr-plus-circle menu-list__item-btn-add"></span>
+        <span
+          class="lnr lnr-plus-circle menu-list__item-btn-add"
+          @click="addMenuItem(menuItem)"
+        ></span>
       </div>
       <div class="menu-list__item__row menu-list__item__row--direction-col">
         <h1 class="menu-list__item-title">{{ menuItem.title }}</h1>
@@ -31,8 +34,14 @@ export default {
     store.dispatch("FetchMenuList").then(() => {
       menuList.value = store.state.menuList;
     });
+
+    const addMenuItem = (item) => {
+      console.log(item);
+    };
+
     return {
       menuList,
+      addMenuItem,
     };
   },
 };

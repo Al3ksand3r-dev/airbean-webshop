@@ -1,0 +1,40 @@
+.navbar {
+  top: 0;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  max-width: 468px;
+  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+
+  &__burger {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    cursor: pointer;
+    border-radius: 50%;
+    background: #fff;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 0 5px 2px rgba(#000, 0.4);
+
+    &-line {
+      width: 25px;
+      height: 4px;
+      margin: 2px 0;
+      background: $brown;
+      border-radius: 10px;
+    }
+  }
+
+  &__cart {
+    @extend .navbar__burger;
+    width: 60px;
+    height: 60px;
+    font-size: 22px;
+    background: $brown;
+    color: #fff;
+  }
+}
