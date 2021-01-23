@@ -36,7 +36,8 @@ export default {
     });
 
     const addMenuItem = (item) => {
-      console.log(item);
+      store.commit("TOGGLE_CART_ANIMATION");
+      store.commit("ADD_CART_ITEM", item);
     };
 
     return {
