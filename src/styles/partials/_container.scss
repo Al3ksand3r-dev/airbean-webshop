@@ -1,11 +1,11 @@
 .container {
   width: 100%;
+  margin: auto;
   height: 100vh;
+  max-width: 468px;
 
   &__content {
     height: 100%;
-    margin: auto;
-    max-width: 468px;
     &--bg-pink {
       background: $pink;
     }

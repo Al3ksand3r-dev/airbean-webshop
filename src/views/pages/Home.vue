@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <div class="container__content">
-      <h1>Hello, world!</h1>
-    </div>
+    <h1>Hello, world!</h1>
   </div>
 </template>
 
