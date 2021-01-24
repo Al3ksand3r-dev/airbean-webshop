@@ -33,7 +33,7 @@
         </div>
         <div class="cart-list__col">
           <p class="cart-list__total-price">
-            {{ $store.getters.totalCartPrice }}kr
+            {{ $store.getters.totalCartPrice }} kr
           </p>
         </div>
       </div>
@@ -41,7 +41,7 @@
         <button
           class="cart-list__submit"
           :disabled="$store.getters.totalCartPrice === 0"
-          @click="handleOrder()"
+          @click="submitOrder()"
         >
           Complete order
         </button>
@@ -57,10 +57,19 @@ export default {
   name: "TheCartList",
   setup() {
     const cartItems = computed(() => store.state.cartItems);
-    const handleOrder = () => console.log("Clicked");
+    const submitOrder = () => {
+      const order = {
+        title: cartItems.value.map((cartItem) => cartItem.title),
+        price: cartItems.value.reduce(
+          (sum, item) => sum + item.count * item.price,
+          0
+        ),
+      };
+      store.dispatch("CreateOrder", order);
+    };
     return {
       cartItems,
-      handleOrder,
+      submitOrder,
     };
   },
 };

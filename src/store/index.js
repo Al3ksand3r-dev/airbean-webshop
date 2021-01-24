@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import { getMenuList } from "@/services/MenuServices";
+import { getMenuList, createOrder } from "@/services/MenuServices";
 
 export default createStore({
   state: {
@@ -38,6 +38,9 @@ export default createStore({
   actions: {
     FetchMenuList({ commit }) {
       return getMenuList().then(({ data }) => commit("SET_MENU_LIST", data));
+    },
+    CreateOrder(_, order) {
+      return createOrder(order);
     },
   },
   getters: {
