@@ -6,7 +6,9 @@
 
   &--bottom {
     bottom: 0;
-    position: fixed;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
     @include md() {
       left: 50%;
       transform: translate(-50%);

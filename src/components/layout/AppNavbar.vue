@@ -1,15 +1,15 @@
 <template>
   <nav class="navbar pa-20">
-    <the-cart-menu />
     <div class="navbar__burger">
       <div class="navbar__burger-line"></div>
       <div class="navbar__burger-line"></div>
       <div class="navbar__burger-line"></div>
     </div>
+    <the-cart-menu />
     <div class="navbar__cart" @click="$store.commit('TOGGLE_CART_MODAL')">
       <div
         class="navbar__cart-counter"
-        v-if="cartItems.length"
+        v-if="cartItems.length && $store.getters.totalCartPrice > 0"
         :class="{
           'animate__animated animate__fadeIn animate__faster': animationActive,
         }"
