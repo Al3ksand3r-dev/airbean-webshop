@@ -1,17 +1,28 @@
 .cart {
   width: 90%;
-  height: 90%;
   top: 100px;
   left: 50%;
+  opacity: 0;
   padding: 20px;
-  position: absolute;
   background: #fff;
+  min-height: 700px;
+  position: absolute;
   border-radius: 5px;
-  transform: translate(-50%);
+  visibility: hidden;
+  transform: translate(-50%, -20px);
+  box-shadow: 0 0 10px 2px rgba(#000, 0.1);
+
+  &--open {
+    opacity: 1;
+    transition: 0.2s ease;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
 
   &__title {
     text-align: center;
     font-size: 32px;
     font-weight: 700;
+    padding: 20px 0;
   }
 }

@@ -6,15 +6,15 @@
       <div class="navbar__burger-line"></div>
       <div class="navbar__burger-line"></div>
     </div>
-    <div class="navbar__cart">
+    <div class="navbar__cart" @click="$store.commit('TOGGLE_CART_MODAL')">
       <div
         class="navbar__cart-counter"
-        v-if="hasCartItems"
+        v-if="cartItems.length"
         :class="{
           'animate__animated animate__fadeIn animate__faster': animationActive,
         }"
       >
-        <span>{{ hasCartItems }}</span>
+        <span>{{ counter }}</span>
       </div>
       <span class="lnr lnr-cart"></span>
     </div>
@@ -29,10 +29,14 @@ export default {
   components: { TheCartMenu },
   name: "AppNavbar",
   setup() {
-    const hasCartItems = computed(() => store.state.cartItems.length);
+    const cartItems = computed(() => store.state.cartItems);
     const animationActive = computed(() => store.state.isActive);
 
-    return { hasCartItems, animationActive };
+    const counter = computed(() => {
+      return cartItems.value.reduce((sum, item) => (sum += item.count), 0);
+    });
+
+    return { cartItems, animationActive, counter };
   },
 };
 </script>

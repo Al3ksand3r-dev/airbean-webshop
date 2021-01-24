@@ -1,5 +1,5 @@
 <template>
-  <div class="cart">
+  <div class="cart" :class="{ 'cart--open': $store.state.openCartModal }">
     <h1 class="cart__title">Din beställning</h1>
     <the-cart-list />
   </div>

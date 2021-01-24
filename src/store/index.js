@@ -7,6 +7,7 @@ export default createStore({
     menuList: [],
     cartItems: [],
     isActive: false,
+    openCartModal: false,
   },
   mutations: {
     SET_MENU_LIST(state, menuList) {
@@ -14,11 +15,12 @@ export default createStore({
     },
     ADD_CART_ITEM(state, item) {
       const newItem = Object.assign({ count: state.count }, item);
-      const existingItem = state.cartItems.find(
+      const itemExist = state.cartItems.find(
         (cartItem) => cartItem.id === item.id
       );
-      if (existingItem) {
-        existingItem.count++;
+      if (itemExist) {
+        itemExist.count++;
+        return;
       }
       state.cartItems.push(newItem);
       console.log(state.cartItems);
@@ -29,10 +31,21 @@ export default createStore({
         state.isActive = !state.isActive;
       }, 500);
     },
+    TOGGLE_CART_MODAL(state) {
+      state.openCartModal = !state.openCartModal;
+    },
   },
   actions: {
     FetchMenuList({ commit }) {
       return getMenuList().then(({ data }) => commit("SET_MENU_LIST", data));
+    },
+  },
+  getters: {
+    totalCartPrice: (state) => {
+      return state.cartItems.reduce(
+        (sum, item) => sum + item.price * item.count,
+        0
+      );
     },
   },
 });
