@@ -1,0 +1,17 @@
+.cart {
+  width: 90%;
+  height: 90%;
+  top: 100px;
+  left: 50%;
+  padding: 20px;
+  position: absolute;
+  background: #fff;
+  border-radius: 5px;
+  transform: translate(-50%);
+
+  &__title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+  }
+}

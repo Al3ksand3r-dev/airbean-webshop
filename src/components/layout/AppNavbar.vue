@@ -1,5 +1,6 @@
 <template>
   <nav class="navbar pa-20">
+    <the-cart-menu />
     <div class="navbar__burger">
       <div class="navbar__burger-line"></div>
       <div class="navbar__burger-line"></div>
@@ -23,7 +24,9 @@
 <script>
 import store from "@/store";
 import { computed } from "vue";
+import TheCartMenu from "../TheCartMenu.vue";
 export default {
+  components: { TheCartMenu },
   name: "AppNavbar",
   setup() {
     const hasCartItems = computed(() => store.state.cartItems.length);
