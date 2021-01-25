@@ -53,9 +53,11 @@
 <script>
 import store from "@/store";
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 export default {
   name: "TheCartList",
   setup() {
+    const router = useRouter();
     const cartItems = computed(() => store.state.cartItems);
     const submitOrder = () => {
       const order = {
@@ -65,7 +67,9 @@ export default {
           0
         ),
       };
-      store.dispatch("CreateOrder", order);
+      store
+        .dispatch("CreateOrder", order)
+        .then(() => router.push({ name: "OrderStatus" }));
     };
     return {
       cartItems,

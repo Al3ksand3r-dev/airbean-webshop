@@ -10,12 +10,11 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  console.log(req.body);
-  //   try {
-  //     res.status(200).json({ message: "Order sent" });
-  //   } catch (error) {
-  //     res.status(400).json(error);
-  //   }
+  try {
+    res.status(200).json({ message: "Order sent" });
+  } catch (error) {
+    res.status(400).json(error);
+  }
 });
 
 module.exports = router;
