@@ -1,3 +1,6 @@
+/*
+  Breakpoints
+*/
 // Small devices
 @mixin sm {
   @media (min-width: #{$screen-sm-min}) {
@@ -23,5 +26,19 @@
 @mixin xl {
   @media (min-width: #{$screen-xl-min}) {
     @content;
+  }
+}
+
+/*
+  Functions
+*/
+
+@mixin theme-colors($light-theme: true) {
+  @if $light-theme {
+    background-color: white;
+    color: $brown;
+  } @else {
+    background-color: white;
+    color: $brown;
   }
 }

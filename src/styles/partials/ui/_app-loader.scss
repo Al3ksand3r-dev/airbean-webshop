@@ -1,0 +1,47 @@
+.loader {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s ease;
+  position: absolute;
+  background: rgba(#fff, 0.65);
+
+  &__circle {
+    width: 130px;
+    height: 130px;
+    margin: auto;
+    display: flex;
+    border: 8px solid $orange;
+    border-radius: 50%;
+    border-color: transparent $orange $orange $orange;
+    animation: 1s spin infinite linear;
+  }
+
+  &__inner {
+    @extend .loader__circle;
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    display: flex;
+    position: relative;
+    border-color: transparent $brown $brown $brown;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  &.set-loader {
+    opacity: 1;
+    visibility: visible;
+  }
+}

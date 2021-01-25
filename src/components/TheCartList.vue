@@ -38,13 +38,11 @@
         </div>
       </div>
       <div class="cart-list__row">
-        <button
-          class="cart-list__submit"
+        <app-button
+          label="Köp"
           :disabled="$store.getters.totalCartPrice === 0"
-          @click="submitOrder()"
-        >
-          Complete order
-        </button>
+          :handleSubmit="submitOrder"
+        />
       </div>
     </div>
   </article>
@@ -54,7 +52,9 @@
 import store from "@/store";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
+import AppButton from "./ui/AppButton.vue";
 export default {
+  components: { AppButton },
   name: "TheCartList",
   setup() {
     const router = useRouter();
@@ -67,9 +67,14 @@ export default {
           0
         ),
       };
-      store
-        .dispatch("CreateOrder", order)
-        .then(() => router.push({ name: "OrderStatus" }));
+      store.dispatch("CreateOrder", order).then(() => {
+        store.commit("SET_LOADING");
+        store.commit("TOGGLE_CART_MODAL");
+        setTimeout(() => {
+          router.push({ name: "OrderStatus" });
+          store.commit("SET_LOADING");
+        }, 1500);
+      });
     };
     return {
       cartItems,

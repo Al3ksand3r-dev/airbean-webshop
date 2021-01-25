@@ -1,0 +1,19 @@
+.app-btn {
+  width: 100%;
+  cursor: pointer;
+  margin: 34px 0 54px;
+  font-size: 24px;
+  font-weight: 700;
+  border: none;
+  padding: 20px;
+  color: #fff;
+  border-radius: 40px;
+
+  &--bottom {
+    bottom: 0;
+    left: 50%;
+    width: 90%;
+    transform: translate(-50%);
+    position: absolute;
+  }
+}

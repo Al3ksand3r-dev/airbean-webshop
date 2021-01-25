@@ -1,7 +1,7 @@
 <template>
   <div class="container__content container__content--bg-pink">
     <graphics-top />
-    <Title title="Meny" />
+    <Title title="Meny" class="py-23" />
     <the-menu-list />
     <graphics-bottom />
   </div>

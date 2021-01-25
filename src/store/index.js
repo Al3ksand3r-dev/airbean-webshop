@@ -7,18 +7,24 @@ export default createStore({
     menuList: [],
     cartItems: [],
     isActive: false,
+    isLoading: false,
     openCartModal: false,
   },
   mutations: {
     SET_MENU_LIST(state, menuList) {
       state.menuList = menuList;
     },
-    ADD_CART_ITEM(state, item) {
+    ADD_CART_ITEM(state, item = {}) {
+      if (Object.keys(item).length === 0) {
+        state.cartItems = [];
+        console.log(state.cartItems);
+        return;
+      }
       const newItem = Object.assign({ count: state.count }, item);
       const itemExist = state.cartItems.find(
         (cartItem) => cartItem.id === item.id
       );
-      if (itemExist) {
+      if (itemExist && Object.keys(item).length === 0) {
         itemExist.count++;
         return;
       }
@@ -34,13 +40,18 @@ export default createStore({
     TOGGLE_CART_MODAL(state) {
       state.openCartModal = !state.openCartModal;
     },
+    SET_LOADING(state) {
+      state.isLoading = !state.isLoading;
+    },
   },
   actions: {
     FetchMenuList({ commit }) {
       return getMenuList().then(({ data }) => commit("SET_MENU_LIST", data));
     },
-    CreateOrder(_, order) {
-      return createOrder(order);
+    CreateOrder({ commit }, order) {
+      return createOrder(order).then(() => {
+        commit("ADD_CART_ITEM", {});
+      });
     },
   },
   getters: {

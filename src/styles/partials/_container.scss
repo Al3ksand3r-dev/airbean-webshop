@@ -6,11 +6,39 @@
 
   &__content {
     height: 100%;
+    position: relative;
     &--bg-pink {
       background: $pink;
     }
     &--bg-orange {
       background: $orange;
     }
+    &--text-center {
+      text-align: center;
+    }
   }
+
+  &__text-sm {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+
+    &--bold {
+      font-weight: 700;
+    }
+  }
+
+  &__text-md {
+    color: #fff;
+    font-size: 23px;
+    font-weight: 400;
+
+    &--bold {
+      font-weight: 700;
+    }
+  }
+}
+
+.drone {
+  width: 250px;
 }

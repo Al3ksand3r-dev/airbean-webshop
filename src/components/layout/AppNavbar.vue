@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar pa-20">
+  <nav class="navbar pa-20" v-show="$route.name !== 'OrderStatus'">
     <div class="navbar__burger">
       <div class="navbar__burger-line"></div>
       <div class="navbar__burger-line"></div>
