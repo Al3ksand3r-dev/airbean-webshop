@@ -5,9 +5,11 @@ import { isRegistered } from "@/use/IsRegistered.js";
 export default createStore({
   state: {
     count: 1,
+    orders: [],
     menuList: [],
     cartItems: [],
     isActive: false,
+    isSidebar: false,
     isLoading: false,
     openCartModal: false,
   },
@@ -44,24 +46,43 @@ export default createStore({
     SET_LOADING(state) {
       state.isLoading = !state.isLoading;
     },
+    SET_ORDERS(state, orders) {
+      state.orders = orders;
+    },
+    TOGGLE_SIDEBAR(state) {
+      state.isSidebar = !state.isSidebar;
+    },
   },
   actions: {
     FetchMenuList({ commit }) {
       return getMenuList().then(({ data }) => commit("SET_MENU_LIST", data));
     },
-    CreateOrder({ commit }, order) {
+    CreateOrder({ commit, state }, order) {
       if (isRegistered.value) {
-        const orders = [];
-        orders.push(order);
-        localStorage.setItem("orders", JSON.stringify(orders));
-        return createOrder(order).then(() => {
-          commit("ADD_CART_ITEM", {});
-        });
-      } else {
-        return createOrder(order).then(() => {
+        return createOrder(order).then(({ data }) => {
+          Object.assign(order, { orderNr: data.orderNr });
+          state.orders.push(order);
+          localStorage.setItem("orders", JSON.stringify(state.orders));
+          localStorage.setItem(
+            "order_info",
+            JSON.stringify({
+              eta: data.eta,
+              orderNr: data.orderNr,
+            })
+          );
           commit("ADD_CART_ITEM", {});
         });
       }
+      return createOrder(order).then(({ data }) => {
+        localStorage.setItem(
+          "order_info",
+          JSON.stringify({
+            eta: data.eta,
+            orderNr: data.orderNr,
+          })
+        );
+        commit("ADD_CART_ITEM", {});
+      });
     },
   },
   getters: {

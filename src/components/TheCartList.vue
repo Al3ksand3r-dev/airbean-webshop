@@ -53,6 +53,7 @@ import store from "@/store";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
 import AppButton from "./ui/AppButton.vue";
+import moment from "moment";
 export default {
   components: { AppButton },
   name: "TheCartList",
@@ -61,7 +62,7 @@ export default {
     const cartItems = computed(() => store.state.cartItems);
     const submitOrder = () => {
       const order = {
-        title: cartItems.value.map((cartItem) => cartItem.title),
+        date: moment().format("YYYY/MM/DD"),
         price: cartItems.value.reduce(
           (sum, item) => sum + item.count * item.price,
           0

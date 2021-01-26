@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <div
-      class="container__content container__content--bg-brown container__content--align-center"
-    >
+    <div class="container__content container__content--bg-brown">
       <graphics-top />
       <the-app-order-history v-if="isRegistered" />
       <the-app-form v-else />

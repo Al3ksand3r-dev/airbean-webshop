@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar pa-20" v-show="$route.name !== 'OrderStatus'">
-    <div class="navbar__burger">
+    <div class="navbar__burger" @click="$store.commit('TOGGLE_SIDEBAR')">
       <div class="navbar__burger-line"></div>
       <div class="navbar__burger-line"></div>
       <div class="navbar__burger-line"></div>

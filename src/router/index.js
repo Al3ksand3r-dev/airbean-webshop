@@ -16,6 +16,7 @@ const routes = [
     path: "/order-status",
     name: "OrderStatus",
     component: () => import("@/views/pages/OrderStatus.vue"),
+    meta: { hasOrder: true },
   },
   {
     path: "/profile",
@@ -27,6 +28,15 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const order = localStorage.getItem("order_info");
+  if (to.matched.some((route) => route.meta.hasOrder && !order)) {
+    next({ name: "Menu" });
+  } else {
+    next();
+  }
 });
 
 export default router;

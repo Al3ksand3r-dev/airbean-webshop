@@ -46,6 +46,9 @@
 .p-top-100 {
   padding: 100px 0 0;
 }
+.p-top-120 {
+  padding: 120px 0 0;
+}
 
 // colors
 .bg-brown {
@@ -55,7 +58,62 @@
   background: #fff;
 }
 
+// text
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
 // font weight
 .bold {
   font-weight: 700;
+}
+
+// Layout
+.flex {
+  display: flex;
+}
+
+.direction-row {
+  flex-direction: row;
+}
+.direction-col {
+  flex-direction: column;
+}
+.h-space-between,
+.v-space-between {
+  justify-content: space-between;
+}
+
+.h-align-start,
+.v-align-start {
+  align-items: start;
+}
+.h-align-center,
+.v-align-center {
+  align-items: center;
+}
+.h-align-end,
+.v-align-end {
+  align-items: flex-end;
+}
+.self-align-end {
+  align-self: flex-end;
+}
+
+// borders {
+.border-bottom {
+  border-bottom: 1px solid;
+  &-dark {
+    border-color: #333;
+  }
+}
+.border-top {
+  border-top: 1px solid;
+  &-light {
+    border-color: #555;
+  }
 }

@@ -24,6 +24,9 @@
     &--text-center {
       text-align: center;
     }
+    &--text-left {
+      text-align: left;
+    }
     &--align-center {
       margin: auto;
     }
@@ -32,29 +35,33 @@
   &__text-sm {
     color: #fff;
     font-size: 16px;
-    font-weight: 400;
-
-    &--bold {
-      font-weight: 700;
-    }
   }
 
   &__text-md {
     color: #fff;
     font-size: 23px;
-    font-weight: 400;
+  }
 
-    &--bold {
-      font-weight: 700;
-    }
+  &__text-lg {
+    color: #fff;
+    font-size: 28px;
   }
 
   &__logo {
     margin: auto;
     display: block;
   }
-}
 
-.drone {
-  width: 250px;
+  &__image {
+    display: block;
+    margin: 0 auto;
+
+    &--size-md {
+      width: 150px;
+    }
+
+    &--size-lg {
+      width: 250px;
+    }
+  }
 }
