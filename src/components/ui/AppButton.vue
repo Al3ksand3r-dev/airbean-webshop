@@ -23,7 +23,7 @@ export default {
     },
     handleSubmit: {
       type: Function,
-      required: true,
+      required: false,
     },
     label: {
       type: String,

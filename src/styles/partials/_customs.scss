@@ -2,10 +2,25 @@
 .mr-20 {
   margin: 0 20px 0;
 }
+.mar-top-100 {
+  margin: 100px 0 0;
+}
 
 // Padding
+.pa-10 {
+  padding: 10px;
+}
 .pa-20 {
   padding: 20px;
+}
+.px-5 {
+  padding: 0 5px 0;
+}
+.px-10 {
+  padding: 0 10px 0;
+}
+.px-20 {
+  padding: 0 20px 0;
 }
 .px-25 {
   padding: 0 25px 0;
@@ -27,4 +42,20 @@
 }
 .p-top-40 {
   padding: 40px 0 0;
+}
+.p-top-100 {
+  padding: 100px 0 0;
+}
+
+// colors
+.bg-brown {
+  background: $brown;
+}
+.bg-white {
+  background: #fff;
+}
+
+// font weight
+.bold {
+  font-weight: 700;
 }

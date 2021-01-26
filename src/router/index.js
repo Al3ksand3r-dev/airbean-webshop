@@ -17,6 +17,11 @@ const routes = [
     name: "OrderStatus",
     component: () => import("@/views/pages/OrderStatus.vue"),
   },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: () => import("@/views/pages/Profile.vue"),
+  },
 ];
 
 const router = createRouter({

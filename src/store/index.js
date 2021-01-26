@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import { getMenuList, createOrder } from "@/services/MenuServices";
+import { isRegistered } from "@/use/IsRegistered.js";
 
 export default createStore({
   state: {
@@ -49,9 +50,18 @@ export default createStore({
       return getMenuList().then(({ data }) => commit("SET_MENU_LIST", data));
     },
     CreateOrder({ commit }, order) {
-      return createOrder(order).then(() => {
-        commit("ADD_CART_ITEM", {});
-      });
+      if (isRegistered.value) {
+        const orders = [];
+        orders.push(order);
+        localStorage.setItem("orders", JSON.stringify(orders));
+        return createOrder(order).then(() => {
+          commit("ADD_CART_ITEM", {});
+        });
+      } else {
+        return createOrder(order).then(() => {
+          commit("ADD_CART_ITEM", {});
+        });
+      }
     },
   },
   getters: {

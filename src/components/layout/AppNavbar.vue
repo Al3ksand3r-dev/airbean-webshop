@@ -6,7 +6,11 @@
       <div class="navbar__burger-line"></div>
     </div>
     <the-cart-menu />
-    <div class="navbar__cart" @click="$store.commit('TOGGLE_CART_MODAL')">
+    <div
+      class="navbar__cart"
+      @click="$store.commit('TOGGLE_CART_MODAL')"
+      v-if="$route.name !== 'Profile'"
+    >
       <div
         class="navbar__cart-counter"
         v-if="cartItems.length && $store.getters.totalCartPrice > 0"
